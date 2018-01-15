@@ -16,7 +16,7 @@ MyGlItem::MyGlItem()
 
     //Für Blatt 6 createCube wird nicht mehr benötigt
     m_cube = new GLCube("MyCube", v_Zero, v_XYZ, GLColorRgba::clBlue, "../MM2017/textures/cube.jpg");
-    m_sphere = new GLSphere("MySphere", 5.0, GLColorRgba::clBlue, "../MM2017/textures/earthmap1024x512.jpg");
+    m_sphere = new GLSphere("MySphere", 5.0, GLColorRgba::clBlue, "../MM2017/textures/earthmap1024x5122.jpg");
     m_disc_white = new GLDisc("MyDiscWhite", m_radius, "../MM2017/textures/white_disc.jpg");
     m_disc_black = new GLDisc("MyDiscBlack", m_radius, "../MM2017/textures/black_disc.jpg");
     initializeDice();
