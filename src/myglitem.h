@@ -6,6 +6,7 @@
 #include "gldisc.h"
 #include "glquad.h"
 #include "glmouseray.h"
+#include "glclone.h"
 #include <QMouseEvent>
 
 
@@ -35,6 +36,7 @@ public:
     void drawWhite();
     void drawBlack();
     void initializeDice();
+    void drawbody();
     virtual void mousePressed(int x, int y) override;
     virtual bool isHit(QVector3D p1, QVector3D p2);
     QPoint punktInEbene(QVector3D p1, QVector3D p2);
@@ -48,8 +50,10 @@ private:
     float m_radius;
     GLCube * m_cube;
     GLSphere * m_sphere;
+    GLSphere * m_sphereTop;
     GLDisc * m_disc_white;
     GLDisc * m_disc_black;
+    GLClone * m_disc;
     GLQuad * m_quad;
     GLMouseRay * m_mouseRay;
     QMouseEvent * m_lastMouseEvent;

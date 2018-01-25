@@ -14,7 +14,8 @@ SOURCES += src/main.cpp \
 	src/gldisc.cpp \
 	src/globals.cpp \
 	src/glquad.cpp \
-	src/glmouseray.cpp
+	src/glmouseray.cpp \
+    src/glclone.cpp
 
 RESOURCES += qml.qrc \
     translations.qrc \
@@ -60,5 +61,6 @@ HEADERS += \
     src/gldisc.h \
 	src/globals.h \
 	src/glquad.h \
-	src/glmouseray.h
+	src/glmouseray.h \
+    src/glclone.h
 

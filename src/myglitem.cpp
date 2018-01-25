@@ -19,6 +19,8 @@ MyGlItem::MyGlItem()
     m_sphere = new GLSphere("MySphere", 5.0, GLColorRgba::clBlue, "../MM2017/textures/earthmap1024x5122.jpg");
     m_disc_white = new GLDisc("MyDiscWhite", m_radius, "../MM2017/textures/white_disc.jpg");
     m_disc_black = new GLDisc("MyDiscBlack", m_radius, "../MM2017/textures/black_disc.jpg");
+    m_disc = new GLClone("Body",3,1,NULL,GLColorRgba::clMagenta,10,18);
+    m_sphereTop = new GLSphere("MySphereTop", 1.9, GLColorRgba::clMagenta,NULL);
     initializeDice();
     m_quad = new GLQuad("MyQuad");
     m_mouseRay = new GLMouseRay("MouseRay");
@@ -35,6 +37,9 @@ void MyGlItem::paintOnTopOfQmlScene()
     m_renderer->setColorArrayEnabled(false);
     m_renderer->setLightingEnabled(true);
     m_renderer->setTextureEnabled(true);
+
+
+
     m_renderer->setAmbientLightBrightness(0.5);
 
     //Blatt 3 Aufgabe 1
@@ -53,31 +58,31 @@ void MyGlItem::paintOnTopOfQmlScene()
 //    drawCube();
 
 
-      switch(m_taskNumber)
-    {
-        case 0:
-            drawCube();
-            drawNormals();
-            break;
-        case 1:
-            //Blatt 5
-            m_renderer->scale(QVector3D(1.0, 5.0, 1.0));
-            drawCube();
-            drawNormals();
-            m_renderer->scale(QVector3D(1.0, 0.2, 1.0));
-            m_renderer->translate(1.0, 2.0 * m_scaling_factor * 0.2, 0.0);
-            m_renderer->scale(QVector3D(2.0, 1.0, 1.0));
-            drawCube();
-            drawNormals();
-            m_renderer->scale(QVector3D(0.5, 1.0, 1.0));
-            m_renderer->translate(0.0, 2.0  * m_scaling_factor * 0.2, 0.0);
-            m_renderer->scale(QVector3D(3.0, 1.0, 1.0));
-            drawCube();
-            drawNormals();
-            break;
-        default:
-            break;
-    }
+//      switch(m_taskNumber)
+//    {
+//        case 0:
+//            drawCube();
+//            drawNormals();
+//            break;
+//        case 1:
+//            //Blatt 5
+//            m_renderer->scale(QVector3D(1.0, 5.0, 1.0));
+//            drawCube();
+//            drawNormals();
+//            m_renderer->scale(QVector3D(1.0, 0.2, 1.0));
+//            m_renderer->translate(1.0, 2.0 * m_scaling_factor * 0.2, 0.0);
+//            m_renderer->scale(QVector3D(2.0, 1.0, 1.0));
+//            drawCube();
+//            drawNormals();
+//            m_renderer->scale(QVector3D(0.5, 1.0, 1.0));
+//            m_renderer->translate(0.0, 2.0  * m_scaling_factor * 0.2, 0.0);
+//            m_renderer->scale(QVector3D(3.0, 1.0, 1.0));
+//            drawCube();
+//            drawNormals();
+//            break;
+//        default:
+//            break;
+//    }
 
     //Blatt 6
     //m_cube->draw(renderer());
@@ -92,7 +97,20 @@ void MyGlItem::paintOnTopOfQmlScene()
 
     //Blatt 9
     //m_cube->draw(renderer()); //Würfel
-    m_sphere->draw(renderer()); //Weltkugel
+   // m_sphere->draw(renderer()); //Weltkugel
+
+    //Blatt10
+    drawbody();
+}
+
+void MyGlItem::drawbody()
+{
+    m_renderer->pushMvMatrix();
+    m_renderer->translate(QVector3D(0,0,0));
+    m_disc->draw(renderer());
+    m_renderer->translate(QVector3D(0,0,5));
+    m_sphereTop->draw(renderer());
+    m_renderer->translate(QVector3D(0,0,0));
 }
 
 bool MyGlItem::isHit(QVector3D p1, QVector3D p2)
@@ -460,6 +478,8 @@ void MyGlItem::drawWhite()
 
 
 }
+
+
 
 void MyGlItem::drawBlack()
 {
